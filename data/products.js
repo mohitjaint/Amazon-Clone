@@ -17,7 +17,11 @@ export function loadProductsFetch(){
     return response.json();
   }).then((data) => {
     products = data;
-  });
+  })
+  .catch((error) => {
+    console.log('Error loading products:', error);
+  })
+  ;
   
   return promise;
   
