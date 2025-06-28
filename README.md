@@ -17,9 +17,14 @@ This project served as a hands-on learning experience that helped sharpen my dev
 - Interactive product display
 - Dynamic order management
 - Fetch API for loading product data
-- Responsive design (pre-built CSS)
 
 ---
+
+## Live Demo
+
+Check out the live demo of this project hosted on GitHub Pages:
+
+**[Amazon Clone Live Demo](https://mohitjaint.github.io/Amazon-Clone/)** 
 
 ## Technologies Used
 
