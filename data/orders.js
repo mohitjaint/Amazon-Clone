@@ -9,17 +9,28 @@ export function addOrder(order){
 let productsList;
 
 
-async function loadPage(){
-    
+async function loadPage() {
   await loadProductsFetch();
 
- 
   productsList = products;
 
   renderOrderPage(orders);
 
+  document.querySelectorAll('.js-track-package-button').forEach((button) => {
+    button.addEventListener('click', (event) => {
+        const productId = event.target.getAttribute('data-product-id');
+        const orderId = event.target.getAttribute('data-order-id');
+        window.location.href = `tracking.html?productId=${productId}&orderId=${orderId}`;
+    });
+});
+
+
 }
-loadPage();
+
+if (window.location.pathname.includes('orders.html')) {
+    loadPage();
+}
+
 
 function saveToStorage(){
     localStorage.setItem('orders', JSON.stringify(orders));
@@ -90,11 +101,11 @@ function renderOrderPage(orders){
             </div>
 
             <div class="product-actions">
-              <a href="tracking.html">
-                <button class="track-package-button button-secondary">
+              
+                <button data-product-id="${productDetails.id}" data-order-id= "${order.id}" class="js-track-package-button track-package-button button-secondary ">
                   Track package
                 </button>
-              </a>
+              
             </div>`;
         });
         html += `</div>
@@ -105,4 +116,6 @@ function renderOrderPage(orders){
     
     document.querySelector('.js-order-container').innerHTML = html;
 }
+
+
 
